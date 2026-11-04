@@ -140,7 +140,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                 </View>
                 <View className="text-[0.6875rem] text-slate-500 mt-0.5">
                   {deliveryMethod === 'pickup'
-                    ? '到货后将向您微信发送独家提货码，凭码开柜或扫码领走'
+                    ? '到货后可在订单中查看提货码，向自提点工作人员出示核销'
                     : '配送限所选社区的服务范围，具体送达安排由代购商确认'}
                 </View>
               </View>
