@@ -1,3 +1,4 @@
+import { SafeOverlay } from './SafeOverlay';
 import Taro from '@tarojs/taro';
 import { Button, View, Form, Input, Text } from './ui';
 /**
@@ -70,13 +71,13 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   };
 
   return (
-    <View className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 backdrop-blur-xs p-0 sm:p-4 animate-in fade-in duration-200">
+    <SafeOverlay className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 backdrop-blur-xs p-0 sm:p-4 animate-in fade-in duration-200">
       <View
-        className="w-full max-w-lg bg-white rounded-t-3xl sm:rounded-3xl overflow-hidden shadow-2xl max-h-[92vh] flex flex-col text-left"
+        className="safe-modal-panel w-full max-w-lg bg-white rounded-t-3xl sm:rounded-3xl overflow-hidden shadow-2xl max-h-[92vh] flex flex-col text-left"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <View className="p-4 border-b border-slate-100 flex items-center justify-between bg-[#0055A5] text-white">
+        <View className="shrink-0 p-4 border-b border-slate-100 flex items-center justify-between bg-[#0055A5] text-white">
           <View>
             <View className="font-bold text-base leading-tight">确认订单与结算</View>
             <View className="text-[0.6875rem] text-blue-100 mt-0.5">山姆直采 · 专职代购保障</View>
@@ -91,7 +92,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
         </View>
 
         {/* Form Body */}
-        <Form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-4 space-y-4">
+        <Form onSubmit={handleSubmit} className="min-h-0 flex-1 overflow-y-auto p-4 space-y-4">
           {/* Delivery Method Selector */}
           <View className="grid grid-cols-2 gap-2 bg-slate-100 p-1 rounded-2xl">
             <Button
@@ -307,6 +308,6 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
           </View>
         </Form>
       </View>
-    </View>
+    </SafeOverlay>
   );
 };

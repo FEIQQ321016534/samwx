@@ -1,3 +1,4 @@
+import { SafeOverlay } from './SafeOverlay';
 import { Button, Option, View, Form, Select, Input, Text } from './ui';
 /**
  * @license
@@ -62,9 +63,9 @@ export const NewSplitModal: React.FC<NewSplitModalProps> = ({
   };
 
   return (
-    <View className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 backdrop-blur-xs p-0 sm:p-4 animate-in fade-in duration-150">
+    <SafeOverlay className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 backdrop-blur-xs p-0 sm:p-4 animate-in fade-in duration-150">
       <View
-        className="w-full max-w-md bg-white rounded-t-3xl sm:rounded-3xl overflow-hidden shadow-2xl p-5 text-left space-y-4"
+        className="safe-modal-panel w-full max-w-md bg-white rounded-t-3xl sm:rounded-3xl overflow-hidden shadow-2xl p-5 text-left space-y-4"
         onClick={(e) => e.stopPropagation()}
       >
         <View className="flex items-center justify-between border-b border-slate-100 pb-3">
@@ -163,6 +164,6 @@ export const NewSplitModal: React.FC<NewSplitModalProps> = ({
           </Button>
         </Form>
       </View>
-    </View>
+    </SafeOverlay>
   );
 };

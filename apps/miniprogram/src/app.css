@@ -14,3 +14,10 @@ input, textarea { font-size: inherit; }
 .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
 .ui-icon { display: inline-block; vertical-align: middle; flex-shrink: 0; width: 32px; height: 32px; }
 .ui-text { display: inline; }
+.cart-safe-panel { box-sizing: border-box; min-height: 0; }
+.cart-close-button { width: 2.75rem; height: 2.75rem; min-width: 2.75rem; min-height: 2.75rem; }
+.safe-modal-overlay { box-sizing: border-box; }
+.safe-modal-panel { box-sizing: border-box; min-height: 0; max-height: var(--modal-max-height, 100vh); overflow-y: auto; }
+.native-input-control { min-width: 0; height: 1.5rem; min-height: 1.5rem; line-height: 1.5rem; padding-top: 0; padding-bottom: 0; }
+.native-input-control.input-tall-p2 { height: 2.625rem; min-height: 2.625rem; line-height: 2.625rem; }
+.native-input-control.input-tall-p3 { height: 3.125rem; min-height: 3.125rem; line-height: 3.125rem; }

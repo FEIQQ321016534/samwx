@@ -5,6 +5,8 @@ import { Button, View, Text } from './ui';
  */
 
 import React from 'react';
+import { ScrollView } from '@tarojs/components';
+import { useSafeWindowInsets } from './SafeOverlay';
 import { CartItem } from '../utils/orderCalculations';
 import { formatRMB, calculateCheckoutTotals } from '../utils/orderCalculations';
 import { X, Trash2, Plus, Minus, ArrowRight, ShieldCheck, ShoppingBag } from './Icons';
@@ -26,29 +28,32 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   onRemoveItem,
   onProceedCheckout,
 }) => {
+  const safe = useSafeWindowInsets();
   if (!isOpen) return null;
 
   const totals = calculateCheckoutTotals(items, 'pickup', 0);
 
   return (
-    <View className="fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
+    <View className="fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-xs animate-in fade-in duration-200" onClick={onClose}>
       <View
-        className="w-full max-w-md bg-white h-full shadow-2xl flex flex-col text-left justify-between"
+        className="cart-safe-panel w-full max-w-md bg-white h-full shadow-2xl flex flex-col text-left"
+        style={{paddingTop:safe.top,paddingBottom:safe.bottom}}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <View className="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/80">
-          <View className="flex items-center gap-2">
+        <View className="p-4 shrink-0 border-b border-slate-100 flex items-center justify-between gap-2 bg-slate-50/80">
+          <View className="min-w-0 flex-1 flex items-center gap-2">
             <ShoppingBag className="w-5 h-5 text-[#0055A5]" />
-            <View className="font-bold text-slate-900 text-base">待拼单与代购清单</View>
-            <Text className="text-xs bg-blue-100 text-[#0055A5] px-2 py-0.5 rounded-full font-medium tabular-nums">
+            <View className="min-w-0 truncate font-bold text-slate-900 text-base">待拼单与代购清单</View>
+            <Text className="shrink-0 text-xs bg-blue-100 text-[#0055A5] px-2 py-0.5 rounded-full font-medium tabular-nums">
               {items.reduce((s, i) => s + i.quantity, 0)} 件
             </Text>
           </View>
 
           <Button
             onClick={onClose}
-            className="w-8 h-8 rounded-full hover:bg-slate-200 flex items-center justify-center text-slate-500 transition-colors"
+            style={{minWidth:'44px',minHeight:'44px'}}
+            className="cart-close-button shrink-0 rounded-full hover:bg-slate-200 flex items-center justify-center text-slate-500 transition-colors"
             aria-label="关闭清单"
           >
             <X className="w-5 h-5" />
@@ -56,7 +61,8 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
         </View>
 
         {/* Item List */}
-        <View className="flex-1 overflow-y-auto p-4 space-y-3">
+        <ScrollView scrollY className="flex-1 min-h-0" style={{height:'0px'}}>
+        <View className={`p-4 space-y-3 ${items.length === 0 ? 'h-full' : ''}`}>
           {items.length === 0 ? (
             <View className="h-full flex flex-col items-center justify-center text-center p-6 text-slate-400">
               <View className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mb-3 text-slate-300">
@@ -136,10 +142,11 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             ))
           )}
         </View>
+        </ScrollView>
 
         {/* Bottom Total & Checkout */}
         {items.length > 0 && (
-          <View className="p-4 bg-white border-t border-slate-100 shadow-lg space-y-3">
+          <View className="shrink-0 p-4 bg-white border-t border-slate-100 shadow-lg space-y-3">
             {/* Fee summary breakdown */}
             <View className="space-y-1.5 text-xs text-slate-500">
               <View className="flex justify-between">

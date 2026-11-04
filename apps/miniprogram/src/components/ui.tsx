@@ -12,7 +12,14 @@ export const Button = ({ children, type, onClick, ...props }: any) => {
     if (browserSubmit) submit?.({ ...event, preventDefault() {} });
   }}>{children}</NativeButton>;
 };
-export const Input = ({ onChange, type, required, ...props }: any) => <NativeInput {...props} type={type === 'tel' ? 'number' : type || 'text'} onInput={(e) => onChange?.({ ...e, target: { value: e.detail.value } })} />;
+export const Input = ({ onChange, type, required, className = '', ...props }: any) => {
+  // Native inputs have a fixed default height. With border-box + vertical
+  // padding the text area can collapse on iOS. CSS reserves the whole box
+  // height and centers text without native vertical padding.
+  const padded = /(?:^|\s)(?:p|py)-3(?:\s|$)/.test(className) ? 'input-tall-p3'
+    : /(?:^|\s)(?:p|py)-2(?:\s|$)/.test(className) ? 'input-tall-p2' : '';
+  return <NativeInput {...props} className={`native-input-control ${padded} ${className}`} type={type === 'tel' ? 'number' : type || 'text'} onInput={(e) => onChange?.({ ...e, target: { value: e.detail.value } })} />;
+};
 export const Textarea = ({ onChange, required, ...props }: any) => <NativeTextarea {...props} onInput={(e) => onChange?.({ ...e, target: { value: e.detail.value } })} />;
 export const Form = ({ onSubmit, children, ...props }: any) => <FormSubmit.Provider value={onSubmit}><NativeForm {...props} onSubmit={(e) => onSubmit?.({ ...e, preventDefault() {} })}>{children}</NativeForm></FormSubmit.Provider>;
 export const Select = ({ children, value, onChange, ...props }: any) => {

@@ -19,6 +19,7 @@ import { CheckoutModal } from '../../components/CheckoutModal';
 import { WeChatPayModal } from '../../components/WeChatPayModal';
 import { LiveTrackerView } from '../../components/LiveTrackerView';
 import { OrderHistoryView } from '../../components/OrderHistoryView';
+import { SafeOverlay } from '../../components/SafeOverlay';
 import { AfterSalesModal } from '../../components/AfterSalesModal';
 import { ReceiptModal } from '../../components/ReceiptModal';
 import { PickupQrModal } from '../../components/PickupQrModal';
@@ -346,13 +347,13 @@ export default function App() {
         {error && <View className="bg-red-50 text-red-700 p-3 text-xs" onClick={() => refresh()}>连接失败：{error} · 点击重试</View>}
         {/* Global Search & Filter Bar */}
         <View className="p-3 bg-white border-b border-slate-100 flex items-center gap-2">
-          <View className="flex-1 relative flex items-center">
+          <View className="flex-1 min-w-0 relative flex items-center">
             <Search className="w-4 h-4 text-slate-400 absolute left-3 pointer-events-none" />
             <Input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="搜索山姆大包装: 瑞士卷 / 烤鸡 / 牛排 / 小青柠..."
+              placeholder="搜索商品或关键词"
               className="w-full text-xs pl-9 pr-8 py-2 bg-slate-100 rounded-full border border-transparent focus:border-[#0055A5] focus:bg-white focus:outline-none transition-all placeholder:text-slate-400"
             />
             {searchQuery && (
@@ -664,15 +665,15 @@ export default function App() {
         />
       </View>
 
-      {showWallet && <View className="fixed inset-0 z-50 bg-black/60 flex items-end" onClick={() => setShowWallet(false)}>
-        <View className="w-full bg-white rounded-t-3xl p-5 safe-bottom" onClick={(e) => e.stopPropagation()}>
+      {showWallet && <SafeOverlay className="fixed inset-0 z-50 bg-black/60 flex items-end" onClick={() => setShowWallet(false)}>
+        <View className="safe-modal-panel w-full bg-white rounded-t-3xl p-5" onClick={(e) => e.stopPropagation()}>
           <View className="flex justify-between items-center"><Text className="font-bold">我的账户余额</Text><Button className="w-12 text-sm shrink-0" onClick={() => setShowWallet(false)}>关闭</Button></View>
           <View className="text-3xl font-bold text-[#0055A5] py-5">¥{(wallet.balanceCents / 100).toFixed(2)}</View>
           <View className="text-xs text-slate-500 mb-3">未成团和称重退差余额可用于本平台后续订单，以下为账户收支记录。</View>
           <View className="max-h-[50vh] overflow-y-auto">{wallet.entries.length === 0 ? <View className="text-xs text-slate-400">暂无收支记录</View> : wallet.entries.map((e: any) => <View key={e.id} className="py-3 border-t border-slate-100 text-xs flex justify-between"><View><View>{e.note}</View><View className="text-[0.625rem] text-slate-400">{e.createdAt}</View></View><Text className={e.amountCents > 0 ? 'text-emerald-600' : 'text-rose-600'}>{e.amountCents > 0 ? '+' : ''}¥{(e.amountCents / 100).toFixed(2)}</Text></View>)}</View>
         </View>
-      </View>}
-      {optionSheet && <View className="fixed inset-0 z-50 bg-black/60 flex items-end"><View className="w-full bg-white rounded-t-3xl p-5 safe-bottom space-y-3"><View className="font-bold flex justify-between"><Text>{optionSheet.title}</Text><Button className="w-12 text-sm shrink-0" onClick={()=>finishSelection()}>取消</Button></View>{optionSheet.items.length>6&&<Input value={optionSearch} onChange={(e:any)=>setOptionSearch(e.target.value)} className="w-full rounded-xl bg-slate-100 p-3 text-sm" placeholder="输入名称搜索"/>}<View className="max-h-[60vh] overflow-y-auto">{optionSheet.items.map((name:string,index:number)=>name.includes(optionSearch)&&<Button key={index} className="w-full text-left py-3 border-b border-slate-100 text-sm text-[#0055A5]" onClick={()=>finishSelection(index)}>{name}</Button>)}</View></View></View>}
+      </SafeOverlay>}
+      {optionSheet && <SafeOverlay className="fixed inset-0 z-50 bg-black/60 flex items-end"><View className="safe-modal-panel w-full bg-white rounded-t-3xl p-5 space-y-3"><View className="font-bold flex justify-between"><Text>{optionSheet.title}</Text><Button className="w-12 text-sm shrink-0" onClick={()=>finishSelection()}>取消</Button></View>{optionSheet.items.length>6&&<Input value={optionSearch} onChange={(e:any)=>setOptionSearch(e.target.value)} className="w-full rounded-xl bg-slate-100 p-3 text-sm" placeholder="输入名称搜索"/>}<View className="max-h-[60vh] overflow-y-auto">{optionSheet.items.map((name:string,index:number)=>name.includes(optionSearch)&&<Button key={index} className="w-full text-left py-3 border-b border-slate-100 text-sm text-[#0055A5]" onClick={()=>finishSelection(index)}>{name}</Button>)}</View></View></SafeOverlay>}
       <AfterSalesModal order={serviceOrder} onClose={()=>setServiceOrder(null)} />
       {/* Floating Modals and Sheets */}
       <ProductDetailModal

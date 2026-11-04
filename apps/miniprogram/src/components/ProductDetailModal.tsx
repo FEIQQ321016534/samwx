@@ -1,3 +1,4 @@
+import { SafeOverlay } from './SafeOverlay';
 import { Button, View, Text } from './ui';
 /**
  * @license
@@ -59,9 +60,9 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   };
 
   return (
-    <View className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 backdrop-blur-xs p-0 sm:p-4 animate-in fade-in duration-200">
+    <SafeOverlay className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 backdrop-blur-xs p-0 sm:p-4 animate-in fade-in duration-200">
       <View
-        className="w-full max-w-lg bg-white rounded-t-3xl sm:rounded-3xl overflow-hidden shadow-2xl max-h-[90vh] flex flex-col text-left"
+        className="safe-modal-panel w-full max-w-lg bg-white rounded-t-3xl sm:rounded-3xl overflow-hidden shadow-2xl max-h-[90vh] flex flex-col text-left"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header / Close Bar */}
@@ -242,6 +243,6 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           </View>
         </View>
       </View>
-    </View>
+    </SafeOverlay>
   );
 };

@@ -1,11 +1,12 @@
+import { SafeOverlay } from './SafeOverlay';
 import React from 'react';
 import { View, Text, Button } from './ui';
 import { X, ShieldCheck } from './Icons';
 
 export function WeChatPayModal({ isOpen, onClose, amount, walletBalance = 0, devPaymentsEnabled = false, testPaymentsEnabled = false, uatEnabled = false, wechatPaymentEnabled = false, busy = false, onPaymentSuccess, onRefresh }: any) {
   if (!isOpen) return null;
-  return <View className="fixed inset-0 z-50 flex items-end justify-center bg-black/60">
-    <View className="w-full bg-white rounded-t-3xl p-5 safe-bottom space-y-4">
+  return <SafeOverlay className="fixed inset-0 z-50 flex items-end justify-center bg-black/60">
+    <View className="safe-modal-panel w-full bg-white rounded-t-3xl p-5 space-y-4">
       <View className="flex items-center justify-between border-b border-slate-100 pb-3"><Text className="font-bold text-base">确认付款</Text><Button onClick={onClose}><X className="w-5 h-5 text-slate-400" /></Button></View>
       <View className="text-center py-5"><View className="text-xs text-slate-500">本单应付</View><View className="text-3xl font-bold text-slate-900 mt-2">¥{amount.toFixed(2)}</View></View>
       <View className="rounded-xl bg-slate-50 p-3 text-xs flex justify-between"><Text>{uatEnabled ? '测试账户余额' : '账户余额'}</Text><Text>¥{walletBalance.toFixed(2)}</Text></View>
@@ -19,5 +20,5 @@ export function WeChatPayModal({ isOpen, onClose, amount, walletBalance = 0, dev
         <Button disabled={busy} className="text-[#0055A5] text-xs" onClick={onRefresh}>刷新测试资格</Button>
       </View>}
     </View>
-  </View>;
+  </SafeOverlay>;
 }
