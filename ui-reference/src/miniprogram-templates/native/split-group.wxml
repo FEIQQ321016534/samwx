@@ -1,0 +1,57 @@
+<!-- components/split-group/split-group.wxml -->
+<view class="split-card">
+  <!-- 头部：品类标签与倒计时 -->
+  <view class="header-row">
+    <view class="tag-box">
+      <view class="category-tag"><text>{{group.category}}</text></view>
+      <text class="desc">{{group.slotDescription}}</text>
+    </view>
+    <view class="countdown-badge">
+      <text class="time-text">剩 {{formattedTime}}</text>
+    </view>
+  </view>
+
+  <!-- 拼单商品标题 -->
+  <text class="product-title">{{group.productName}}</text>
+
+  <!-- 价格与操作栏 -->
+  <view class="action-row">
+    <view class="price-info">
+      <text class="label">单人拼单价</text>
+      <view class="price-val">
+        <text class="price-sym">¥</text>
+        <text class="price-num">{{group.pricePerSlot}}</text>
+        <text class="price-unit">/份</text>
+      </view>
+    </view>
+
+    <!-- 按钮群：分享小程序卡片 + 参拼 -->
+    <view class="btn-group">
+      <button class="btn-share" open-type="share" data-group="{{group}}" catchtap="onShareClick">
+        分享拼单
+      </button>
+
+      <button 
+        class="{{isFull ? 'btn-join disabled' : 'btn-join'}}" 
+        disabled="{{isFull}}" 
+        catchtap="onJoinClick"
+      >
+        {{isFull ? '已锁单采购' : '立即参拼'}}
+      </button>
+    </view>
+  </view>
+
+  <!-- 进度条与头像展示 -->
+  <view class="progress-box">
+    <view class="progress-header">
+      <text class="leader-info">团长 {{group.participants[0].nickname}} 发起</text>
+      <text class="{{isFull ? 'status-text success' : 'status-text warning'}}">
+        {{isFull ? '已成团' : '差 ' + remaining + ' 人成团'}} ({{group.joinedCount}}/{{group.totalSlots}})
+      </text>
+    </view>
+
+    <view class="progress-bar-bg">
+      <view class="progress-bar-fill" style="width: {{percent}}%;"></view>
+    </view>
+  </view>
+</view>

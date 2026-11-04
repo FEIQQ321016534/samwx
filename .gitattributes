@@ -1,0 +1,2 @@
+# Preserve the imported UI reference as supplied.
+ui-reference/** -whitespace linguist-vendored

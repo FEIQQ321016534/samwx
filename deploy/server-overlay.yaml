@@ -1,0 +1,46 @@
+name: sam-stage
+
+services:
+  api:
+    mem_limit: 1g
+    cpus: 1.0
+    pids_limit: 128
+    logging:
+      driver: local
+      options:
+        max-size: "10m"
+        max-file: "3"
+    environment:
+      NODE_OPTIONS: --max-old-space-size=384
+      TRUST_PROXY_CIDRS: ""
+      CORS_ORIGINS: http://127.0.0.1:18081
+    ports: !override
+      - "127.0.0.1:18787:8787"
+
+  admin:
+    mem_limit: 128m
+    cpus: 0.25
+    pids_limit: 64
+    logging:
+      driver: local
+      options:
+        max-size: "10m"
+        max-file: "3"
+    build:
+      args:
+        VITE_API_URL: http://127.0.0.1:18787/api
+    ports: !override
+      - "127.0.0.1:18081:8080"
+
+  gateway:
+    profiles: [gateway]
+    ports: !override []
+    networks:
+      private:
+        ipv4_address: 172.30.21.2
+
+networks:
+  private:
+    ipam:
+      config: !override
+        - subnet: 172.30.21.0/24

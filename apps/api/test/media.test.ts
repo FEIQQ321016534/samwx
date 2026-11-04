@@ -1,0 +1,32 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { mkdtemp, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import sharp from 'sharp';
+import { createApp } from '../src/app.ts';
+
+test('private receipt uploads strip metadata, require order ownership and reject disguised files',async t=>{
+  const dir=await mkdtemp(join(tmpdir(),'sam-media-'));
+  const ctx=await createApp({environment:'test',databasePath:':memory:',devAuthEnabled:true,devPaymentsEnabled:true,mediaDirectory:dir});
+  t.after(async()=>{await ctx.app.close();await rm(dir,{recursive:true,force:true});});
+  const call=async(method:any,url:string,token?:string,body?:any)=>ctx.app.inject({method,url:`/api${url}`,headers:token?{authorization:`Bearer ${token}`}:{},...(body?{payload:body}:{})});
+  const login=async(role:string,extra:any={})=>(await call('POST','/auth/dev-login',undefined,{role,...extra})).json().data.token;
+  const buyer=await login('customer',{customerKey:'media-owner'}),other=await login('customer',{customerKey:'media-other'});
+  const seller=await login('merchant',{merchantId:'merchant-laochen'}),wrongSeller=await login('merchant',{merchantId:'merchant-xiaolin'});
+  const created=await call('POST','/orders',buyer,{merchantId:'merchant-laochen',communityId:'community-yangguang',batchId:'batch-laochen-demo',fulfillment:'pickup',recipientName:'凭证测试',recipientPhone:'13800000000',items:[{productId:'sam-p3',optionId:'whole',quantity:1}]});
+  assert.equal(created.statusCode,200,created.body);const order=created.json().data;
+  const png=await sharp({create:{width:24,height:16,channels:3,background:'white'}}).png().toBuffer();
+  const data={kind:'receipt',filename:'../receipt.png',contentBase64:png.toString('base64')};
+  assert.equal((await call('POST',`/admin/orders/${order.id}/media`,buyer,data)).statusCode,403);
+  assert.equal((await call('POST',`/admin/orders/${order.id}/media`,wrongSeller,data)).statusCode,403);
+  assert.equal((await call('POST',`/admin/orders/${order.id}/media`,seller,{...data,contentBase64:Buffer.from('<svg onload="alert(1)"></svg>').toString('base64')})).statusCode,400);
+  const uploaded=await call('POST',`/admin/orders/${order.id}/media`,seller,data);assert.equal(uploaded.statusCode,200,uploaded.body);
+  const id=uploaded.json().data.id;
+  assert.equal((await call('GET',`/media/${id}`)).statusCode,401);
+  assert.equal((await call('GET',`/media/${id}`,other)).statusCode,403);
+  assert.equal((await call('GET',`/media/${id}`,wrongSeller)).statusCode,403);
+  const downloaded=await call('GET',`/media/${id}`,buyer);assert.equal(downloaded.statusCode,200);assert.equal(downloaded.headers['content-type'],'image/jpeg');assert.match(String(downloaded.headers['cache-control']),/no-store/);
+  const metadata=await sharp(downloaded.rawPayload).metadata();assert.equal(metadata.format,'jpeg');assert.equal(metadata.exif,undefined);
+  const list=(await call('GET',`/orders/${order.id}/media`,buyer)).json().data;assert.equal(list.length,1);assert.equal(list[0].createdBy,undefined);
+});

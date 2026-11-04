@@ -1,0 +1,16 @@
+{
+  "description": "山姆邻里拼 · 烟台多代购商平台",
+  "miniprogramRoot": "dist/",
+  "projectname": "sam-yantai",
+  "appid": "wxa07063be507caecd",
+  "compileType": "miniprogram",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "minified": true,
+    "postcss": false,
+    "enhance": true,
+    "coverView": true
+  },
+  "condition": {}
+}

@@ -1,0 +1,41 @@
+<!-- components/product-card/product-card.wxml -->
+<view class="product-card" bindtap="onOpenDetail">
+  <!-- 商品主图与状态标签 -->
+  <view class="image-wrapper">
+    <image class="product-image" src="{{product.imageUrl || '/assets/default-sam.png'}}" mode="aspectFill" />
+    
+    <view wx:if="{{product.requiresColdChain}}" class="badge cold-chain">
+      <text>冷链保鲜</text>
+    </view>
+    
+    <view wx:if="{{product.canSplit}}" class="badge split-tag">
+      <text>支持拼半份</text>
+    </view>
+  </view>
+
+  <!-- 标题与副标题 -->
+  <view class="content-wrapper">
+    <text class="title">{{product.name}}</text>
+    <text class="specs">{{product.originalSpecs}}</text>
+
+    <!-- 价格与代购销量 -->
+    <view class="price-row">
+      <view class="price-box">
+        <text class="currency">¥</text>
+        <text class="amount">{{product.canSplit ? product.splitPrice : product.originalPrice}}</text>
+        <text wx:if="{{product.canSplit}}" class="unit">起/拼</text>
+      </view>
+      <text class="sales">已代购 {{product.salesCount}}件</text>
+    </view>
+
+    <!-- 底部操作按钮 -->
+    <view class="button-group">
+      <button wx:if="{{product.canSplit}}" class="btn-split" catchtap="onQuickSplit">
+        去拼单
+      </button>
+      <button class="{{product.canSplit ? 'btn-buy' : 'btn-buy full-width'}}" catchtap="onDirectBuy">
+        整件代购
+      </button>
+    </view>
+  </view>
+</view>

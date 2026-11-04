@@ -1,0 +1,85 @@
+name: sam-uat
+
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: deploy/api.Dockerfile
+    environment:
+      NODE_ENV: staging
+      UAT_MODE: "true"
+      DEV_AUTH_ENABLED: "false"
+      DEV_PAYMENTS_ENABLED: "false"
+      HOST: 0.0.0.0
+      PORT: "8787"
+      DATABASE_PATH: /data/sam.sqlite
+      MEDIA_DIRECTORY: /data/media
+      NODE_OPTIONS: --max-old-space-size=384
+      WECHAT_APP_ID: ${WECHAT_APP_ID:?Set the WeChat AppID for UAT}
+      WECHAT_APP_SECRET_FILE: /run/secrets/wechat-app-secret
+      CORS_ORIGINS: https://sam.mmailife.com
+      TRUST_PROXY_CIDRS: 172.30.21.254/32
+    volumes:
+      - app-data:/data
+      - backups:/backups
+      - type: bind
+        source: ${UAT_WECHAT_APP_SECRET_FILE:?Set the existing WeChat secret file path for UAT}
+        target: /run/secrets/wechat-app-secret
+        read_only: true
+        bind:
+          create_host_path: false
+    ports:
+      - "127.0.0.1:18788:8787"
+    networks:
+      stage-private:
+        aliases: [sam-uat-api]
+    mem_limit: 1g
+    cpus: 1.0
+    pids_limit: 128
+    logging:
+      driver: local
+      options:
+        max-size: "10m"
+        max-file: "3"
+    restart: unless-stopped
+    init: true
+    read_only: true
+    tmpfs: ["/tmp"]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: ["ALL"]
+    stop_grace_period: 30s
+
+  admin:
+    build:
+      context: ..
+      dockerfile: deploy/uat-admin.Dockerfile
+      args:
+        VITE_BASE_PATH: /uat/
+        VITE_API_URL: /uat/api
+    ports:
+      - "127.0.0.1:18082:8080"
+    networks:
+      stage-private:
+        aliases: [sam-uat-admin]
+    mem_limit: 128m
+    cpus: 0.25
+    pids_limit: 64
+    logging:
+      driver: local
+      options:
+        max-size: "10m"
+        max-file: "3"
+    restart: unless-stopped
+    read_only: true
+    tmpfs: ["/tmp"]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: ["ALL"]
+
+volumes:
+  app-data:
+  backups:
+
+networks:
+  stage-private:
+    external: true
+    name: sam-stage_private

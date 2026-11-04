@@ -1,0 +1,37 @@
+<!-- components/wechat-pay/wechat-pay.wxml -->
+<view wx:if="{{visible}}" class="pay-mask">
+  <view class="pay-dialog">
+    <!-- 弹窗标题 -->
+    <view class="dialog-header">
+      <text class="header-title">微信支付</text>
+      <view class="close-icon" bindtap="onCancel">✕</view>
+    </view>
+
+    <!-- 支付详情 -->
+    <view class="dialog-body">
+      <text class="merchant-name">山姆邻里拼 · 专职代购</text>
+      <text class="pay-amount">¥{{amount}}</text>
+      <text class="order-id">单号: {{orderNumber}}</text>
+
+      <!-- 6位密码格 -->
+      <view class="pwd-box">
+        <view wx:for="{{[0,1,2,3,4,5]}}" wx:key="*this" class="pwd-item">
+          <view wx:if="{{pin.length > index}}" class="pwd-dot"></view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 微信原生键盘 -->
+    <view class="keyboard-grid">
+      <view 
+        wx:for="{{keys}}" 
+        wx:key="*this" 
+        class="key-item {{item === '' ? 'empty' : ''}}" 
+        data-val="{{item}}" 
+        bindtap="onKeyPress"
+      >
+        <text>{{item}}</text>
+      </view>
+    </view>
+  </view>
+</view>

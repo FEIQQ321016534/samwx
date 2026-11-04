@@ -1,0 +1,18 @@
+{$APP_DOMAIN:localhost} {
+  encode zstd gzip
+  header {
+    X-Content-Type-Options nosniff
+    Referrer-Policy same-origin
+    -Server
+  }
+  handle /api/* {
+    reverse_proxy api:8787 {
+      header_up X-Forwarded-For {remote_host}
+      header_up X-Forwarded-Proto {scheme}
+      header_up X-Forwarded-Host {host}
+    }
+  }
+  handle {
+    reverse_proxy admin:8080
+  }
+}

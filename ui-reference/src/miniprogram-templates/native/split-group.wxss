@@ -1,0 +1,168 @@
+/* components/split-group/split-group.wxss */
+.split-card {
+  background-color: #ffffff;
+  border-radius: 28rpx;
+  padding: 24rpx;
+  border: 1rpx solid #f1f5f9;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.03);
+  margin-bottom: 20rpx;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tag-box {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.category-tag {
+  background-color: #fef3c7;
+  color: #78350f;
+  font-size: 20rpx;
+  font-weight: 700;
+  padding: 4rpx 14rpx;
+  border-radius: 10rpx;
+}
+
+.desc {
+  font-size: 22rpx;
+  color: #64748b;
+}
+
+.countdown-badge {
+  background-color: #fffbeb;
+  padding: 4rpx 14rpx;
+  border-radius: 30rpx;
+}
+
+.time-text {
+  font-size: 20rpx;
+  color: #b45309;
+  font-family: monospace;
+}
+
+.product-title {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #0f172a;
+  margin-top: 14rpx;
+}
+
+.action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16rpx;
+}
+
+.price-info .label {
+  display: block;
+  font-size: 20rpx;
+  color: #94a3b8;
+}
+
+.price-val {
+  display: flex;
+  align-items: baseline;
+}
+
+.price-sym {
+  font-size: 22rpx;
+  color: #e11d48;
+  font-weight: 700;
+}
+
+.price-num {
+  font-size: 34rpx;
+  color: #e11d48;
+  font-weight: 700;
+}
+
+.price-unit {
+  font-size: 20rpx;
+  color: #94a3b8;
+  margin-left: 4rpx;
+}
+
+.btn-group {
+  display: flex;
+  gap: 12rpx;
+}
+
+.btn-share {
+  background-color: #fffbeb;
+  border: 1rpx solid #fde68a;
+  color: #92400e;
+  font-size: 22rpx;
+  font-weight: 600;
+  padding: 12rpx 20rpx;
+  border-radius: 20rpx;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.btn-join {
+  background-color: #f59e0b;
+  color: #ffffff;
+  font-size: 22rpx;
+  font-weight: 600;
+  padding: 12rpx 28rpx;
+  border-radius: 20rpx;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.btn-join.disabled {
+  background-color: #ecfdf5;
+  color: #059669;
+  border: 1rpx solid #a7f3d0;
+}
+
+.progress-box {
+  background-color: #f8fafc;
+  border-radius: 20rpx;
+  padding: 16rpx;
+  margin-top: 18rpx;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 22rpx;
+  margin-bottom: 12rpx;
+}
+
+.leader-info {
+  color: #475569;
+}
+
+.status-text.warning {
+  color: #d97706;
+  font-weight: 700;
+}
+
+.status-text.success {
+  color: #059669;
+  font-weight: 700;
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 12rpx;
+  background-color: #e2e8f0;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #fbbf24, #f59e0b);
+  border-radius: 20rpx;
+  transition: width 0.3s ease;
+}

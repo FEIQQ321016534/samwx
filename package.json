@@ -1,0 +1,15 @@
+{
+  "name": "sam-neighborhood-platform",
+  "private": true,
+  "scripts": {
+    "dev:api": "npm --prefix apps/api run dev",
+    "dev:admin": "npm --prefix apps/admin run dev",
+    "dev:miniapp": "npm --prefix apps/miniprogram run dev:weapp",
+    "build:miniapp": "npm --prefix apps/miniprogram run build:weapp",
+    "build:admin": "npm --prefix apps/admin run build",
+    "test:api": "npm --prefix apps/api test",
+    "release:check": "node tools/release-check.mjs",
+    "verify": "node tools/verify.mjs",
+    "build:uat": "npm --prefix apps/miniprogram run build:uat"
+  }
+}

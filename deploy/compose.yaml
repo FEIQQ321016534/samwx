@@ -1,0 +1,74 @@
+name: sam-neighborhood
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: deploy/api.Dockerfile
+    environment:
+      NODE_ENV: production
+      DEV_AUTH_ENABLED: "false"
+      DEV_PAYMENTS_ENABLED: "false"
+      HOST: 0.0.0.0
+      PORT: "8787"
+      DATABASE_PATH: /data/sam.sqlite
+      MEDIA_DIRECTORY: /data/media
+      WECHAT_APP_ID: ${WECHAT_APP_ID:-}
+      WECHAT_APP_SECRET: ${WECHAT_APP_SECRET:-}
+      TRUST_PROXY_CIDRS: 172.30.20.2/32
+      CORS_ORIGINS: https://${APP_DOMAIN:-localhost}
+    volumes:
+      - app-data:/data
+      - backups:/backups
+    expose: ["8787"]
+    networks: ["private"]
+    restart: unless-stopped
+    init: true
+    read_only: true
+    tmpfs: ["/tmp"]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: ["ALL"]
+    stop_grace_period: 30s
+  admin:
+    build:
+      context: ..
+      dockerfile: deploy/admin.Dockerfile
+      args:
+        VITE_API_URL: /api
+    expose: ["8080"]
+    networks: ["private"]
+    restart: unless-stopped
+    read_only: true
+    tmpfs: ["/tmp"]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: ["ALL"]
+  gateway:
+    image: caddy:2-alpine
+    environment:
+      APP_DOMAIN: ${APP_DOMAIN:-localhost}
+    networks:
+      private:
+        ipv4_address: 172.30.20.2
+    ports:
+      - "${BIND_ADDRESS:-127.0.0.1}:${HTTP_PORT:-8080}:80"
+      - "${BIND_ADDRESS:-127.0.0.1}:${HTTPS_PORT:-8443}:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      api:
+        condition: service_healthy
+      admin:
+        condition: service_started
+    restart: unless-stopped
+volumes:
+  app-data:
+  backups:
+  caddy-data:
+  caddy-config:
+
+networks:
+  private:
+    ipam:
+      config:
+        - subnet: 172.30.20.0/24

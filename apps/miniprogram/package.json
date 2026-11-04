@@ -1,0 +1,59 @@
+{
+  "name": "sam-neighborhood-miniprogram",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build:weapp": "taro build --type weapp",
+    "dev:weapp": "taro build --type weapp --watch",
+    "typecheck": "tsc --noEmit",
+    "dev:h5": "node --require ./tools/secure-dev-server.cjs ./node_modules/@tarojs/cli/bin/taro build --type h5 --watch",
+    "build:h5": "taro build --type h5",
+    "build:cloud": "SAM_BUILD_TARGET=cloud TARO_APP_API_BASE_URL=https://sam.mmailife.com/api taro build --type weapp",
+    "build:uat": "node tools/build-uat.mjs"
+  },
+  "dependencies": {
+    "@tarojs/components": "4.3.2",
+    "@tarojs/helper": "4.3.2",
+    "@tarojs/plugin-framework-react": "4.3.2",
+    "@tarojs/plugin-platform-weapp": "4.3.2",
+    "@tarojs/react": "4.3.2",
+    "@tarojs/runtime": "4.3.2",
+    "@tarojs/shared": "4.3.2",
+    "@tarojs/taro": "4.3.2",
+    "qrcode-generator": "^2.0.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "overrides": {
+    "swiper": "12.1.2",
+    "webpack": "5.104.1",
+    "schema-utils@^4.0.0": "4.3.3",
+    "webpack-dev-server": "5.2.7",
+    "webpack-dev-middleware": "7.4.6",
+    "esbuild": "0.28.2",
+    "lodash-es": "4.18.1",
+    "glob@^10.0.0": "10.5.0",
+    "sockjs": {
+      "uuid": "11.1.1"
+    }
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.29.7",
+    "@babel/preset-typescript": "^7.29.7",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.6.3",
+    "@tarojs/cli": "4.3.2",
+    "@tarojs/plugin-platform-h5": "^4.3.2",
+    "@tarojs/webpack5-runner": "4.3.2",
+    "@types/node": "^26.6.6",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.6.2",
+    "babel-preset-taro": "^4.3.2",
+    "lucide-react": "^0.546.0",
+    "react-refresh": "^0.14.2",
+    "sharp": "^0.35.5",
+    "tailwindcss": "3.4.19",
+    "typescript": "^5.9.3",
+    "weapp-tailwindcss": "^4.0.0"
+  }
+}

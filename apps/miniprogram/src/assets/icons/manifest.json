@@ -1,0 +1,735 @@
+{
+  "generatedFrom": "ui-reference/src",
+  "rasterSize": 72,
+  "icons": {
+    "AlertCircle": {
+      "defaultColor": "#d97706",
+      "variants": [
+        {
+          "key": "#d97706|2",
+          "file": "alert-circle-d97706-s2.png"
+        }
+      ]
+    },
+    "ArrowRight": {
+      "defaultColor": "#ffffff",
+      "variants": [
+        {
+          "key": "#ffffff|2",
+          "file": "arrow-right-ffffff-s2.png"
+        }
+      ]
+    },
+    "Bell": {
+      "defaultColor": "#475569",
+      "variants": [
+        {
+          "key": "#475569|2",
+          "file": "bell-475569-s2.png"
+        }
+      ]
+    },
+    "Building": {
+      "defaultColor": "#0055a5",
+      "variants": [
+        {
+          "key": "#0055a5|2",
+          "file": "building-0055a5-s2.png"
+        },
+        {
+          "key": "#0f172a|2",
+          "file": "building-0f172a-s2.png"
+        },
+        {
+          "key": "#475569|2",
+          "file": "building-475569-s2.png"
+        }
+      ]
+    },
+    "Camera": {
+      "defaultColor": "#0055a5",
+      "variants": [
+        {
+          "key": "#0055a5|2",
+          "file": "camera-0055a5-s2.png"
+        }
+      ]
+    },
+    "Check": {
+      "defaultColor": "#059669",
+      "variants": [
+        {
+          "key": "#059669|2",
+          "file": "check-059669-s2.png"
+        },
+        {
+          "key": "#d97706|2",
+          "file": "check-d97706-s2.png"
+        },
+        {
+          "key": "#e2e8f0|2",
+          "file": "check-e2e8f0-s2.png"
+        },
+        {
+          "key": "#ffffff|2",
+          "file": "check-ffffff-s2.png"
+        },
+        {
+          "key": "#ffffff|3",
+          "file": "check-ffffff-s3.png"
+        }
+      ]
+    },
+    "CheckCircle2": {
+      "defaultColor": "#059669",
+      "variants": [
+        {
+          "key": "#059669|2",
+          "file": "check-circle2-059669-s2.png"
+        },
+        {
+          "key": "#34d399|2",
+          "file": "check-circle2-34d399-s2.png"
+        }
+      ]
+    },
+    "ChevronDown": {
+      "defaultColor": "#ffffffb3",
+      "variants": [
+        {
+          "key": "#ffffffb3|2",
+          "file": "chevron-down-ffffffb3-s2.png"
+        }
+      ]
+    },
+    "ChevronRight": {
+      "defaultColor": "#ffffff",
+      "variants": [
+        {
+          "key": "#0055a5|2",
+          "file": "chevron-right-0055a5-s2.png"
+        },
+        {
+          "key": "#047857|2",
+          "file": "chevron-right-047857-s2.png"
+        },
+        {
+          "key": "#ffffff|2",
+          "file": "chevron-right-ffffff-s2.png"
+        }
+      ]
+    },
+    "ClipboardList": {
+      "defaultColor": "#0055a5",
+      "variants": [
+        {
+          "key": "#0055a5|2",
+          "file": "clipboard-list-0055a5-s2.png"
+        },
+        {
+          "key": "#0055a5|2.5",
+          "file": "clipboard-list-0055a5-s2_5.png"
+        },
+        {
+          "key": "#1e293b|2",
+          "file": "clipboard-list-1e293b-s2.png"
+        },
+        {
+          "key": "#1e293b|2.5",
+          "file": "clipboard-list-1e293b-s2_5.png"
+        },
+        {
+          "key": "#64748b|2",
+          "file": "clipboard-list-64748b-s2.png"
+        },
+        {
+          "key": "#64748b|2.5",
+          "file": "clipboard-list-64748b-s2_5.png"
+        }
+      ]
+    },
+    "Clock": {
+      "defaultColor": "#b45309",
+      "variants": [
+        {
+          "key": "#0055a5|2",
+          "file": "clock-0055a5-s2.png"
+        },
+        {
+          "key": "#b45309|2",
+          "file": "clock-b45309-s2.png"
+        },
+        {
+          "key": "#d97706|2",
+          "file": "clock-d97706-s2.png"
+        },
+        {
+          "key": "#fde68a|2",
+          "file": "clock-fde68a-s2.png"
+        }
+      ]
+    },
+    "Code2": {
+      "defaultColor": "#a7f3d0",
+      "variants": [
+        {
+          "key": "#a7f3d0|2",
+          "file": "code2-a7f3d0-s2.png"
+        },
+        {
+          "key": "#ffffff|2",
+          "file": "code2-ffffff-s2.png"
+        }
+      ]
+    },
+    "Copy": {
+      "defaultColor": "#ffffff",
+      "variants": [
+        {
+          "key": "#475569|2",
+          "file": "copy-475569-s2.png"
+        },
+        {
+          "key": "#64748b|2",
+          "file": "copy-64748b-s2.png"
+        },
+        {
+          "key": "#94a3b8|2",
+          "file": "copy-94a3b8-s2.png"
+        },
+        {
+          "key": "#e2e8f0|2",
+          "file": "copy-e2e8f0-s2.png"
+        },
+        {
+          "key": "#ffffff|2",
+          "file": "copy-ffffff-s2.png"
+        }
+      ]
+    },
+    "ExternalLink": {
+      "defaultColor": "#475569",
+      "variants": [
+        {
+          "key": "#475569|2",
+          "file": "external-link-475569-s2.png"
+        }
+      ]
+    },
+    "FileCode": {
+      "defaultColor": "#60a5fa",
+      "variants": [
+        {
+          "key": "#60a5fa|2",
+          "file": "file-code-60a5fa-s2.png"
+        }
+      ]
+    },
+    "FileText": {
+      "defaultColor": "#b45309",
+      "variants": [
+        {
+          "key": "#64748b|2",
+          "file": "file-text-64748b-s2.png"
+        },
+        {
+          "key": "#b45309|2",
+          "file": "file-text-b45309-s2.png"
+        }
+      ]
+    },
+    "Filter": {
+      "defaultColor": "#475569",
+      "variants": [
+        {
+          "key": "#475569|2",
+          "file": "filter-475569-s2.png"
+        }
+      ]
+    },
+    "Fingerprint": {
+      "defaultColor": "#07c160",
+      "variants": [
+        {
+          "key": "#07c160|2",
+          "file": "fingerprint-07c160-s2.png"
+        }
+      ]
+    },
+    "Flame": {
+      "defaultColor": "#d97706",
+      "variants": [
+        {
+          "key": "#d97706|2",
+          "file": "flame-d97706-s2.png"
+        }
+      ]
+    },
+    "Home": {
+      "defaultColor": "#0055a5",
+      "variants": [
+        {
+          "key": "#0055a5|2",
+          "file": "home-0055a5-s2.png"
+        },
+        {
+          "key": "#0055a5|2.5",
+          "file": "home-0055a5-s2_5.png"
+        },
+        {
+          "key": "#1e293b|2",
+          "file": "home-1e293b-s2.png"
+        },
+        {
+          "key": "#1e293b|2.5",
+          "file": "home-1e293b-s2_5.png"
+        },
+        {
+          "key": "#64748b|2",
+          "file": "home-64748b-s2.png"
+        },
+        {
+          "key": "#64748b|2.5",
+          "file": "home-64748b-s2_5.png"
+        }
+      ]
+    },
+    "Layers": {
+      "defaultColor": "#0055a5",
+      "variants": [
+        {
+          "key": "#0055a5|2",
+          "file": "layers-0055a5-s2.png"
+        },
+        {
+          "key": "#0055a5|2.5",
+          "file": "layers-0055a5-s2_5.png"
+        },
+        {
+          "key": "#1e293b|2",
+          "file": "layers-1e293b-s2.png"
+        },
+        {
+          "key": "#1e293b|2.5",
+          "file": "layers-1e293b-s2_5.png"
+        },
+        {
+          "key": "#64748b|2",
+          "file": "layers-64748b-s2.png"
+        },
+        {
+          "key": "#64748b|2.5",
+          "file": "layers-64748b-s2_5.png"
+        },
+        {
+          "key": "#a7f3d0|2",
+          "file": "layers-a7f3d0-s2.png"
+        }
+      ]
+    },
+    "Lock": {
+      "defaultColor": "#475569",
+      "variants": [
+        {
+          "key": "#475569|2",
+          "file": "lock-475569-s2.png"
+        }
+      ]
+    },
+    "MapPin": {
+      "defaultColor": "#0055a5",
+      "variants": [
+        {
+          "key": "#0055a5|2",
+          "file": "map-pin-0055a5-s2.png"
+        },
+        {
+          "key": "#fcd34d|2",
+          "file": "map-pin-fcd34d-s2.png"
+        }
+      ]
+    },
+    "MessageCircle": {
+      "defaultColor": "#475569",
+      "variants": [
+        {
+          "key": "#475569|2",
+          "file": "message-circle-475569-s2.png"
+        }
+      ]
+    },
+    "MessageSquare": {
+      "defaultColor": "#94a3b8",
+      "variants": [
+        {
+          "key": "#94a3b8|2",
+          "file": "message-square-94a3b8-s2.png"
+        }
+      ]
+    },
+    "Minus": {
+      "defaultColor": "#475569",
+      "variants": [
+        {
+          "key": "#334155|2",
+          "file": "minus-334155-s2.png"
+        },
+        {
+          "key": "#475569|2",
+          "file": "minus-475569-s2.png"
+        }
+      ]
+    },
+    "Monitor": {
+      "defaultColor": "#ffffff",
+      "variants": [
+        {
+          "key": "#94a3b8|2",
+          "file": "monitor-94a3b8-s2.png"
+        },
+        {
+          "key": "#ffffff|2",
+          "file": "monitor-ffffff-s2.png"
+        }
+      ]
+    },
+    "Package": {
+      "defaultColor": "#cbd5e1",
+      "variants": [
+        {
+          "key": "#cbd5e1|2",
+          "file": "package-cbd5e1-s2.png"
+        }
+      ]
+    },
+    "PackageCheck": {
+      "defaultColor": "#ffffff",
+      "variants": [
+        {
+          "key": "#ffffff|2",
+          "file": "package-check-ffffff-s2.png"
+        }
+      ]
+    },
+    "Phone": {
+      "defaultColor": "#94a3b8",
+      "variants": [
+        {
+          "key": "#94a3b8|2",
+          "file": "phone-94a3b8-s2.png"
+        },
+        {
+          "key": "#ffffff|2",
+          "file": "phone-ffffff-s2.png"
+        }
+      ]
+    },
+    "Plus": {
+      "defaultColor": "#475569",
+      "variants": [
+        {
+          "key": "#334155|2",
+          "file": "plus-334155-s2.png"
+        },
+        {
+          "key": "#475569|2",
+          "file": "plus-475569-s2.png"
+        }
+      ]
+    },
+    "PlusCircle": {
+      "defaultColor": "#f59e0b",
+      "variants": [
+        {
+          "key": "#d97706|2",
+          "file": "plus-circle-d97706-s2.png"
+        },
+        {
+          "key": "#f59e0b|2",
+          "file": "plus-circle-f59e0b-s2.png"
+        }
+      ]
+    },
+    "QrCode": {
+      "defaultColor": "#0055a5",
+      "variants": [
+        {
+          "key": "#0055a5|2",
+          "file": "qr-code-0055a5-s2.png"
+        }
+      ]
+    },
+    "RotateCcw": {
+      "defaultColor": "#ffffff",
+      "variants": [
+        {
+          "key": "#ffffff|2",
+          "file": "rotate-ccw-ffffff-s2.png"
+        }
+      ]
+    },
+    "RotateCw": {
+      "defaultColor": "#0055a5",
+      "variants": [
+        {
+          "key": "#0055a5|2",
+          "file": "rotate-cw-0055a5-s2.png"
+        }
+      ]
+    },
+    "Search": {
+      "defaultColor": "#94a3b8",
+      "variants": [
+        {
+          "key": "#94a3b8|2",
+          "file": "search-94a3b8-s2.png"
+        }
+      ]
+    },
+    "Send": {
+      "defaultColor": "#ffffff",
+      "variants": [
+        {
+          "key": "#ffffff|2",
+          "file": "send-ffffff-s2.png"
+        }
+      ]
+    },
+    "Share2": {
+      "defaultColor": "#b45309",
+      "variants": [
+        {
+          "key": "#b45309|2",
+          "file": "share2-b45309-s2.png"
+        },
+        {
+          "key": "#ffffff|2",
+          "file": "share2-ffffff-s2.png"
+        }
+      ]
+    },
+    "ShieldCheck": {
+      "defaultColor": "#34d399",
+      "variants": [
+        {
+          "key": "#0055a5|2",
+          "file": "shield-check-0055a5-s2.png"
+        },
+        {
+          "key": "#059669|2",
+          "file": "shield-check-059669-s2.png"
+        },
+        {
+          "key": "#34d399|2",
+          "file": "shield-check-34d399-s2.png"
+        }
+      ]
+    },
+    "ShoppingBag": {
+      "defaultColor": "#ffffff",
+      "variants": [
+        {
+          "key": "#0055a5|2",
+          "file": "shopping-bag-0055a5-s2.png"
+        },
+        {
+          "key": "#334155|2",
+          "file": "shopping-bag-334155-s2.png"
+        },
+        {
+          "key": "#cbd5e1|2",
+          "file": "shopping-bag-cbd5e1-s2.png"
+        },
+        {
+          "key": "#ffffff|2",
+          "file": "shopping-bag-ffffff-s2.png"
+        }
+      ]
+    },
+    "SlidersHorizontal": {
+      "defaultColor": "#78350f",
+      "variants": [
+        {
+          "key": "#475569|2",
+          "file": "sliders-horizontal-475569-s2.png"
+        },
+        {
+          "key": "#78350f|2",
+          "file": "sliders-horizontal-78350f-s2.png"
+        }
+      ]
+    },
+    "Smartphone": {
+      "defaultColor": "#ffffff",
+      "variants": [
+        {
+          "key": "#94a3b8|2",
+          "file": "smartphone-94a3b8-s2.png"
+        },
+        {
+          "key": "#ffffff|2",
+          "file": "smartphone-ffffff-s2.png"
+        }
+      ]
+    },
+    "Snowflake": {
+      "defaultColor": "#a5f3fc",
+      "variants": [
+        {
+          "key": "#a5f3fc|2",
+          "file": "snowflake-a5f3fc-s2.png"
+        }
+      ]
+    },
+    "Sparkles": {
+      "defaultColor": "#78350f",
+      "variants": [
+        {
+          "key": "#78350f|2",
+          "file": "sparkles-78350f-s2.png"
+        },
+        {
+          "key": "#d97706|2",
+          "file": "sparkles-d97706-s2.png"
+        },
+        {
+          "key": "#f43f5e|2",
+          "file": "sparkles-f43f5e-s2.png"
+        },
+        {
+          "key": "#fcd34d|2",
+          "file": "sparkles-fcd34d-s2.png"
+        },
+        {
+          "key": "#ffffff|2",
+          "file": "sparkles-ffffff-s2.png"
+        }
+      ]
+    },
+    "Trash2": {
+      "defaultColor": "#94a3b8",
+      "variants": [
+        {
+          "key": "#94a3b8|2",
+          "file": "trash2-94a3b8-s2.png"
+        },
+        {
+          "key": "#f43f5e|2",
+          "file": "trash2-f43f5e-s2.png"
+        }
+      ]
+    },
+    "Truck": {
+      "defaultColor": "#0055a5",
+      "variants": [
+        {
+          "key": "#0055a5|2",
+          "file": "truck-0055a5-s2.png"
+        },
+        {
+          "key": "#0055a5|2.5",
+          "file": "truck-0055a5-s2_5.png"
+        },
+        {
+          "key": "#0f172a|2",
+          "file": "truck-0f172a-s2.png"
+        },
+        {
+          "key": "#1e293b|2",
+          "file": "truck-1e293b-s2.png"
+        },
+        {
+          "key": "#1e293b|2.5",
+          "file": "truck-1e293b-s2_5.png"
+        },
+        {
+          "key": "#475569|2",
+          "file": "truck-475569-s2.png"
+        },
+        {
+          "key": "#64748b|2",
+          "file": "truck-64748b-s2.png"
+        },
+        {
+          "key": "#64748b|2.5",
+          "file": "truck-64748b-s2_5.png"
+        },
+        {
+          "key": "#d97706|2",
+          "file": "truck-d97706-s2.png"
+        }
+      ]
+    },
+    "User": {
+      "defaultColor": "#94a3b8",
+      "variants": [
+        {
+          "key": "#94a3b8|2",
+          "file": "user-94a3b8-s2.png"
+        }
+      ]
+    },
+    "Users": {
+      "defaultColor": "#d97706",
+      "variants": [
+        {
+          "key": "#1e293b|2",
+          "file": "users-1e293b-s2.png"
+        },
+        {
+          "key": "#1e293b|2.5",
+          "file": "users-1e293b-s2_5.png"
+        },
+        {
+          "key": "#64748b|2",
+          "file": "users-64748b-s2.png"
+        },
+        {
+          "key": "#64748b|2.5",
+          "file": "users-64748b-s2_5.png"
+        },
+        {
+          "key": "#b45309|2",
+          "file": "users-b45309-s2.png"
+        },
+        {
+          "key": "#d97706|2",
+          "file": "users-d97706-s2.png"
+        },
+        {
+          "key": "#d97706|2.5",
+          "file": "users-d97706-s2_5.png"
+        },
+        {
+          "key": "#ffffff|2",
+          "file": "users-ffffff-s2.png"
+        }
+      ]
+    },
+    "X": {
+      "defaultColor": "#64748b",
+      "variants": [
+        {
+          "key": "#334155|2",
+          "file": "x-334155-s2.png"
+        },
+        {
+          "key": "#64748b|2",
+          "file": "x-64748b-s2.png"
+        },
+        {
+          "key": "#94a3b8|2",
+          "file": "x-94a3b8-s2.png"
+        },
+        {
+          "key": "#cbd5e1|2",
+          "file": "x-cbd5e1-s2.png"
+        },
+        {
+          "key": "#ffffff|2",
+          "file": "x-ffffff-s2.png"
+        }
+      ]
+    }
+  }
+}

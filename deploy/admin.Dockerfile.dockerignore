@@ -1,0 +1,13 @@
+**/node_modules
+**/dist
+**/dist-h5
+**/data
+**/.env
+**/.env.local
+**/*.sqlite*
+**/.DS_Store
+ui-reference
+.downloads
+artifacts
+.git
+*.zip

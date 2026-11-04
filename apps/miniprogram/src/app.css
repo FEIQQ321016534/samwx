@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+page { font-size: 28px; color: #1e293b; background: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif; }
+view, text, button, input, textarea, image, form { box-sizing: border-box; }
+button, taro-button-core { margin: 0; padding: 0; border: 0; line-height: inherit; font-size: inherit; background: transparent; color: inherit; border-radius: 0; }
+button::after, taro-button-core::after { border: 0; }
+image { display: block; }
+input, textarea { font-size: inherit; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.mini-status-space { height: var(--status-height, 44px); }
+.mini-header { padding-right: var(--capsule-space, 190px); min-height: 88px; }
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+.ui-icon { display: inline-block; vertical-align: middle; flex-shrink: 0; width: 32px; height: 32px; }
+.ui-text { display: inline; }

@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "ES2020", "module": "ESNext", "moduleResolution": "node",
+    "jsx": "react-jsx", "strict": false, "esModuleInterop": true,
+    "skipLibCheck": true, "allowJs": true, "resolveJsonModule": true,
+    "types": ["@tarojs/taro", "node"], "baseUrl": "."
+  },
+  "include": ["src", "config", "project.config.ts"]
+}

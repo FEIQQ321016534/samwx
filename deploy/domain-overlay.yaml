@@ -1,0 +1,18 @@
+# Apply after compose.yaml and server-overlay.yaml.
+services:
+  api:
+    environment:
+      CORS_ORIGINS: https://sam.mmailife.com
+      TRUST_PROXY_CIDRS: 172.30.21.254/32
+    networks:
+      private:
+        aliases: [sam-stage-api]
+
+  admin:
+    image: sam-stage-admin:domain-20261104
+    build:
+      args:
+        VITE_API_URL: /api
+    networks:
+      private:
+        aliases: [sam-stage-admin]

@@ -1,0 +1,17 @@
+**/node_modules
+**/.env
+**/.env.*
+!**/.env.example
+**/data
+**/*.sqlite
+**/*.sqlite-*
+**/dist
+**/build
+**/coverage
+**/test
+.git
+ui-reference
+apps/admin
+apps/miniapp
+*.zip
+artifacts
